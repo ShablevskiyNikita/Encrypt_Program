@@ -34,25 +34,37 @@ namespace Encrypt
         {
             if ((textBox_p.Text.Length > 0) && (textBox_q.Text.Length > 0))
             {
-                long p = Convert.ToInt64(textBox_p.Text);
-                long q = Convert.ToInt64(textBox_q.Text);
+                long p;
+                long q;
+                try
+                {
+                     p = Convert.ToInt64(textBox_p.Text);
+                     q = Convert.ToInt64(textBox_q.Text);
+
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Invalid input format ");
+                    return;
+                }
+               
                 if (IsTheNumberSimple(p) && IsTheNumberSimple(q))
                 {
-                    string s = "";
-                    StreamReader sr = new StreamReader(fileName, Encoding.Default);
-                    while (!sr.EndOfStream)
+                    string input = "";
+                    StreamReader reader = new StreamReader(fileName, Encoding.Default);
+                    while (!reader.EndOfStream)
                     {
-                        s += sr.ReadLine();
+                        input += reader.ReadLine();
                     }
                    
-                    sr.Close();
+                    reader.Close();
 
                     long n = p * q;
                     long m = (p - 1) * (q - 1);
                     long d = Calculate_d(m);
                     long e_ = Calculate_e(d, m);
 
-                    List<string> result = RSA_Endoce(s, e_, n);
+                    List<string> result = RSA_Endoce(input, e_, n);
 
                     
                     saveFileDialog1.Filter = "(*.txt) | *.txt";
@@ -64,12 +76,12 @@ namespace Encrypt
                     }
 
 
-                    StreamWriter sw = new StreamWriter(saveName);
+                    StreamWriter writer = new StreamWriter(saveName);
                     foreach (string item in result)
                     {
-                        sw.WriteLine(item);
+                        writer.WriteLine(item);
                     }
-                    sw.Close();
+                    writer.Close();
 
                     textBox_d.Text = d.ToString();
                     textBox_n.Text = n.ToString();
@@ -128,13 +140,11 @@ namespace Encrypt
 
             BigInteger bi = new BigInteger();
 
-            for (int i = 0; i < s.Length; i++)
+            foreach(char item in  s)
             {
-                char currentSymbol = s[i];
-                bi = BigInteger.Pow(currentSymbol, (int)e)%n;
+                bi = BigInteger.Pow(item, (int)e) % n;
                 result.Add(bi.ToString());
             }
-
             return result;
         }
 
