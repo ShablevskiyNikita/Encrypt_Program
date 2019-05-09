@@ -160,5 +160,10 @@ namespace Encrypt
         {
             Application.Exit();
         }
+
+        private void OpenEcryptedData_Click(object sender, EventArgs e)
+        {
+            Process.Start(saveName);
+        }
     }
 }

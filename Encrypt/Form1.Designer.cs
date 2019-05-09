@@ -45,7 +45,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.button1 = new System.Windows.Forms.Button();
+            this.OpenEcryptedData = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -187,15 +187,16 @@
             this.label7.TabIndex = 14;
             this.label7.Text = "d=";
             // 
-            // button1
+            // OpenEcryptedData
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(525, 202);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(179, 40);
-            this.button1.TabIndex = 15;
-            this.button1.Text = "Open encrypted data";
-            this.button1.UseVisualStyleBackColor = true;
+            this.OpenEcryptedData.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.OpenEcryptedData.Location = new System.Drawing.Point(525, 202);
+            this.OpenEcryptedData.Name = "OpenEcryptedData";
+            this.OpenEcryptedData.Size = new System.Drawing.Size(179, 40);
+            this.OpenEcryptedData.TabIndex = 15;
+            this.OpenEcryptedData.Text = "Open encrypted data";
+            this.OpenEcryptedData.UseVisualStyleBackColor = true;
+            this.OpenEcryptedData.Click += new System.EventHandler(this.OpenEcryptedData_Click);
             // 
             // label8
             // 
@@ -213,7 +214,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(743, 462);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.OpenEcryptedData);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -257,7 +258,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button OpenEcryptedData;
         private System.Windows.Forms.Label label8;
     }
 }
